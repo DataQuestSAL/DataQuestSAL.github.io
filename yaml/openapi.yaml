@@ -1,0 +1,2341 @@
+openapi: 3.0.1
+info:
+  title: AllianzSF Api Portal
+  description: AllianzSF Api Portal.
+  contact:
+    name: Data Quest sal.
+    email: support@dq.com.lb
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  version: '1.0'
+paths:
+  /AllianzSFApiPortal/v1/Claims:
+    get:
+      tags:
+        - Claims
+      summary: Retrieves the Claims of a Certificate
+      parameters:
+        - name: serialnumber
+          in: query
+          description: Policy Serial Number
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: certificatenumber
+          in: query
+          description: Certificate Number
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: externalReference
+          in: query
+          description: External Reference
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetClaimsResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+    put:
+      tags:
+        - Claims
+      summary: Create a Claim for a Certificate
+      requestBody:
+        description: Structure needed for creating a claim
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClaimRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateClaimResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Claims/Details:
+    get:
+      tags:
+        - Claims
+      summary: Retrieves the Claim Details
+      parameters:
+        - name: claimserno
+          in: query
+          description: Claim Serial Number
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: externalReference
+          in: query
+          description: External Reference
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetClaimDetailsResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Claims/TransactionsDetails:
+    get:
+      tags:
+        - Claims
+      summary: Retrieves the Transaction Details
+      parameters:
+        - name: claimserno
+          in: query
+          description: Claim Serial Number
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: externalReference
+          in: query
+          description: External Reference
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTransactionDetailsResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Claims/Claimant:
+    put:
+      tags:
+        - Claims
+      summary: Add a Claimant to a certain Claim
+      requestBody:
+        description: Structure needed to add a claimant to a claim
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddClaimantRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddClaimantResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Claims/UpdateClaimant:
+    put:
+      tags:
+        - Claims
+      summary: Update a Claimant on a certain Claim
+      requestBody:
+        description: Structure needed to update the information of a claimant
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateClaimantRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateClaimantResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Claims/ClaimUpdate:
+    post:
+      tags:
+        - Claims
+      summary: Update info about a certain Claim
+      requestBody:
+        description: Structure holding infromation about the Claim Update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimUpdateRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateClaimantResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Inquiries/Approval:
+    get:
+      tags:
+        - Inquiries
+      summary: Inquires for the CDC approval status.
+      parameters:
+        - name: requestNumber
+          in: query
+          description: 'The CDC Request Number, this field is provided by the customer.'
+          schema:
+            type: string
+        - name: verificationCode
+          in: query
+          description: 'The CDC Verification Code, this field is provided by the customer.'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CdcApprovalInquiryResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/ListOfValues/Sync:
+    post:
+      tags:
+        - ListOfValues
+      summary: Synching List Of Values
+      requestBody:
+        description: Structure holding infromation about the list of values
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListOfValuesSyncRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOfValuesSyncResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Payments/PaymentApproval:
+    post:
+      tags:
+        - Payments
+      summary: Submit a payment approval
+      requestBody:
+        description: Structure needed to submit a payment approval
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentApprovalRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentApprovalResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Persons/PinUpdate:
+    put:
+      tags:
+        - Persons
+      summary: Updating the Pin of a certain Person
+      requestBody:
+        description: Structure holding infromation about the Pin Update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PinUpdateRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PinUpdateResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Policies:
+    post:
+      tags:
+        - Policies
+      summary: >-
+        Create a new Insurance Policy against a specific CDC Approval. Requires
+        prior inquiry of the CDC Approval.
+      requestBody:
+        description: The details of the policy and CDC Approval
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddPolicyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsurancePolicy'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  '/AllianzSFApiPortal/v1/Policies/{policyId}':
+    delete:
+      tags:
+        - Policies
+      summary: Cancels an insurance policy.
+      parameters:
+        - name: policyId
+          in: path
+          description: >-
+            The id of the policy (UUID or GUID) that Najm returned when created
+            the policy.
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+  /AllianzSFApiPortal/v1/Policies/SearchPolicy:
+    post:
+      tags:
+        - Policies
+      summary: Search for a policy
+      requestBody:
+        description: The details of the policy to be searched for
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchPolicyRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchPolicyResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      security:
+        - oauth2:
+            - openid
+            - profile
+            - email
+            - address
+            - phone
+            - role
+            - AllianzSFApiPortal
+            - offline_access
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          authorizationUrl: 'http://192.168.12.128:83/connect/authorize'
+          tokenUrl: 'http://192.168.12.128:83/connect/token'
+          scopes:
+            AllianzSFApiPortal: AllianzSF Api Portal
+  schemas:
+    ClaimsResponse:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        subJournal:
+          type: string
+          description: Claim Sub Journal
+          nullable: true
+        year:
+          type: integer
+          description: Claim Year
+          format: int32
+        claimNo:
+          type: integer
+          description: Claim Number
+          format: int64
+        polSerNo:
+          type: integer
+          description: Policy Serial Number
+          format: int64
+        product:
+          type: string
+          description: Policy Product Code
+          nullable: true
+        policyNo:
+          type: integer
+          description: Policy Number
+          format: int64
+        certificateNo:
+          type: integer
+          description: Certificate Number
+          format: int64
+        claimDate:
+          type: string
+          description: Claim Date
+          format: date-time
+        claimTime:
+          type: string
+          description: Claim Time
+          nullable: true
+        declarationDate:
+          type: string
+          description: Claim Declaration Date
+          format: date-time
+        claimCreatedUserID:
+          type: string
+          description: Created By UserName
+          nullable: true
+        claimStatus:
+          type: string
+          description: Pending/Settled/Closed
+          nullable: true
+        noOfVehiclesInvolved:
+          type: integer
+          description: Number of Vehicles involved
+          format: int64
+        noNonVehicleInvolved:
+          type: integer
+          description: Number of Non Vehicles
+          format: int64
+        reportType:
+          type: integer
+          description: Report Type
+          format: int64
+        policeReport:
+          type: string
+          description: 'Police Report number: Najm,Morour,â€¦'
+          nullable: true
+      additionalProperties: false
+      description: Claims Structure
+    GetClaimsResponse:
+      type: object
+      properties:
+        claimsResponse:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimsResponse'
+          nullable: true
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: List of Claims response structure
+    ClaimantType:
+      enum:
+        - ''
+        - V
+        - T
+      type: string
+      description: Claimant Types
+    VehicleDetails:
+      type: object
+      properties:
+        vehicleMakeCode:
+          type: integer
+          description: Vehicle Make Code as per IMS Codes
+          format: int64
+        vehicleModelCode:
+          type: integer
+          description: Vehicle Model Code as per IMS Codes
+          format: int64
+        vehicleColor:
+          type: string
+          description: Vehicle Color
+          nullable: true
+        chassisNo:
+          type: string
+          description: Chassis No
+          nullable: true
+        yearBuilt:
+          type: integer
+          description: Vehicle Manufacturing year
+          format: int32
+        liability:
+          type: number
+          description: Claimant's Liability
+          format: double
+        engineNo:
+          type: string
+          description: Engine Number
+          nullable: true
+        marketValue:
+          type: number
+          description: Vehicle Market Value
+          format: double
+        location:
+          type: string
+          description: Car park Location
+          nullable: true
+        licenseNo:
+          type: string
+          description: Driver License Number
+          nullable: true
+        plateNo:
+          type: string
+          description: Vehicle Plate Number
+          nullable: true
+        plateChar1:
+          type: string
+          description: 1st Plate Character in arabic
+          nullable: true
+        plateChar2:
+          type: string
+          description: 2nd Plate Character in arabic
+          nullable: true
+        plateChar3:
+          type: string
+          description: 3rd Plate Character in arabic
+          nullable: true
+        plateSequence:
+          type: string
+          description: Plate Sequence Number
+          nullable: true
+        plateSource:
+          type: string
+          description: Plate Source
+          nullable: true
+        customID:
+          type: string
+          description: Vehicle Custom ID
+          nullable: true
+        vehicleBodyType:
+          type: string
+          description: Vehicle Body Type
+          nullable: true
+        driverName:
+          type: string
+          description: Driver Name
+          nullable: true
+        driverAge:
+          type: integer
+          description: Driver Age
+          format: int32
+        drivingExperience:
+          type: integer
+          description: Driving Experience In Years
+          format: int32
+        lesseeName:
+          type: string
+          description: Lessee Name
+          nullable: true
+        lesseeID:
+          type: string
+          description: Lessee ID Number
+          nullable: true
+        driverAddress:
+          type: string
+          description: Driver Address
+          nullable: true
+        tpInsurCoPIN:
+          type: integer
+          description: Company PIN where TP claimant is Insured
+          format: int64
+        tpClaimNo:
+          type: string
+          description: Claim No at the Company where TP Claimant is insured
+          nullable: true
+      additionalProperties: false
+      description: Vehicle Details
+    ClaimantDetails:
+      type: object
+      properties:
+        claimantGender:
+          type: string
+          description: Claimant Gender
+          nullable: true
+        claimantTitle:
+          type: string
+          description: Claimant Title
+          nullable: true
+        claimantFirstName:
+          type: string
+          description: Claimant First Name Latin
+          nullable: true
+        claimantFatherName:
+          type: string
+          description: Claimant Father Name Latin
+          nullable: true
+        claimantFamilyName:
+          type: string
+          description: Claimant Family Name Latin
+          nullable: true
+        claimantFirstNameArb:
+          type: string
+          description: Claimant First Name Arabic
+          nullable: true
+        claimantFatherNameArb:
+          type: string
+          description: Claimant Father Name Arabic
+          nullable: true
+        claimantFamilyNameArb:
+          type: string
+          description: Claimant Family Name Arabic
+          nullable: true
+        claimantNationality:
+          type: string
+          description: Claimant Nationality
+          nullable: true
+        claimantProfessionCode:
+          type: string
+          description: Claimant Profession
+          nullable: true
+        claimantDOB:
+          type: string
+          description: Claimant Date of Birth
+          nullable: true
+        claimantIDType:
+          type: string
+          description: Claimant ID Type
+          nullable: true
+        claimantIDNo:
+          type: string
+          description: Claimant ID Number
+          nullable: true
+        claimantIDExpiry:
+          type: string
+          description: Claimant ID Expiry Date(Gregorian)
+          nullable: true
+        claimantMobile:
+          type: string
+          description: Claimant Mobile Number
+          nullable: true
+        claimantEmail:
+          type: string
+          description: Claimant Email Address
+          nullable: true
+        claimantMaritalStatus:
+          type: string
+          description: Claimant Marital Status
+          nullable: true
+        yaqeenChecked:
+          type: boolean
+          description: Is Claimant Yaqeen Checked?
+        yaqeenReference:
+          type: string
+          description: Yaqeen Reference
+          nullable: true
+      additionalProperties: false
+      description: Claimant Details
+    NonVehicleDetails:
+      type: object
+      properties:
+        liability:
+          type: number
+          description: Claimant's Liability
+          format: double
+        biType:
+          type: string
+          description: Bodily Injury Type
+          nullable: true
+        tpType:
+          type: string
+          description: Third Party Type
+          nullable: true
+        severityType:
+          type: string
+          description: Severity Type
+          nullable: true
+        propertyType:
+          type: string
+          description: Property Type
+          nullable: true
+        driverName:
+          type: string
+          description: Driver Name
+          nullable: true
+      additionalProperties: false
+      description: Non Vehicle Details
+    PaymentType:
+      enum:
+        - ''
+        - K
+        - A
+      type: string
+      description: Payment Type
+    AdditionalInfo:
+      type: object
+      properties:
+        ownerName:
+          type: string
+          description: Vehicle Owner Name
+          nullable: true
+        ownerID:
+          type: string
+          description: Vehicle Owner ID Number
+          nullable: true
+        email:
+          type: string
+          description: Vehicle Owner Email
+          nullable: true
+        ownerMobile:
+          type: string
+          description: Vehicle Owner Mobile
+          nullable: true
+        poBox:
+          type: string
+          description: Vehicle Owner POBox
+          nullable: true
+        driverID:
+          type: string
+          description: Driver ID
+          nullable: true
+        driverName:
+          type: string
+          description: Driver Name
+          nullable: true
+        driverDOB:
+          type: string
+          description: Driver DOB
+          nullable: true
+        driverIsOwner:
+          type: boolean
+          description: 'is the driver, the Vehicle Owner?'
+        additionalInfo:
+          type: string
+          description: Additional Accident Information
+          nullable: true
+        accidentInfo:
+          type: string
+          description: Accident Information
+          nullable: true
+        paymentType:
+          allOf:
+            - $ref: '#/components/schemas/PaymentType'
+          description: Payment Mode
+        bankNo:
+          type: integer
+          description: Bank Number
+          format: int32
+        ibanNo:
+          type: string
+          description: IBAN Number
+          nullable: true
+        ownerIsDeclaring:
+          type: boolean
+          description: Decleration is done by vehicle owner
+        declaringName:
+          type: string
+          description: Name of the declaring person
+          nullable: true
+        declaringID:
+          type: string
+          description: ID Number of the declaring person
+          nullable: true
+        representitive:
+          type: string
+          description: Representitive
+          nullable: true
+        declarationDate:
+          type: string
+          nullable: true
+        declaringMobile:
+          type: string
+          description: Mobile Number of the Declaring Person
+          nullable: true
+        vehicleNeedInspection:
+          type: boolean
+          description: specify if the vehicle need inspection
+        typeOfClaim:
+          type: string
+          description: Type of Claim
+          nullable: true
+        dateoOfSubmission:
+          type: string
+          description: Submission Date
+          nullable: true
+      additionalProperties: false
+      description: Additional Information
+    CreateClaimRequest:
+      required:
+        - certificateNo
+        - externalReference
+        - polSerNo
+      type: object
+      properties:
+        polSerNo:
+          type: integer
+          description: Policy Serial Number
+          format: int64
+        certificateNo:
+          type: integer
+          description: Certificate Number
+          format: int64
+        smaSerNo:
+          type: integer
+          description: Certificate Serial No
+          format: int64
+        claimDate:
+          type: string
+          description: Claim Date
+          nullable: true
+        claimTime:
+          type: string
+          description: Claim Time
+          nullable: true
+        declarationDate:
+          type: string
+          description: Declaration Date
+          nullable: true
+        isXGracia:
+          type: boolean
+          description: Is Xgracia
+        claimants:
+          type: string
+          description: Claimants
+          nullable: true
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        reportType:
+          type: integer
+          description: Report Type
+          format: int64
+        policeReport:
+          type: string
+          description: 'Police Report number: Najm,Morour,â€¦'
+          nullable: true
+        claimType:
+          type: string
+          description: Claim Type
+          nullable: true
+        claimClause:
+          type: string
+          description: Claim Clause
+          nullable: true
+        partialLoss:
+          type: boolean
+          description: is the claim a partial loss claim
+        repairOption:
+          type: string
+          description: Repair Option
+          nullable: true
+        garage:
+          type: string
+          description: Garage where the Car will be repaired
+          nullable: true
+        totalLoss:
+          type: boolean
+          description: is the claim Total LossClaims
+        totalLossLocation:
+          type: string
+          description: Total Loss Location
+          nullable: true
+        placeOccured:
+          type: string
+          description: Place where the Accident Occurred
+          nullable: true
+        placeOccuredNotes:
+          type: string
+          description: Place where the Accident Occurred
+          nullable: true
+        accidentDetails:
+          type: string
+          description: Accident details
+          nullable: true
+        imsUserID:
+          type: string
+          description: IMS User ID
+          nullable: true
+        externalReference:
+          type: string
+          description: External Reference
+        vehicleDetails:
+          allOf:
+            - $ref: '#/components/schemas/VehicleDetails'
+          description: Vehicle Details
+          nullable: true
+        claimantDetails:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantDetails'
+          description: Claimant Details
+          nullable: true
+        nonVehicleDetails:
+          allOf:
+            - $ref: '#/components/schemas/NonVehicleDetails'
+          description: Non Vehicle Details
+          nullable: true
+        additionalInfo:
+          allOf:
+            - $ref: '#/components/schemas/AdditionalInfo'
+          description: Additional Information
+          nullable: true
+      additionalProperties: false
+      description: Creat Claim Request Structure
+    CreateClaimResponse:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        polSerNo:
+          type: integer
+          description: Policy Serial Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int64
+        pin:
+          type: integer
+          description: Pin
+          format: int64
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Create Claim Output Structure
+    RepairStatus:
+      enum:
+        - ''
+        - A
+        - R
+        - P
+      type: string
+      description: Repair Statuses
+    CamsRecovery:
+      type: object
+      properties:
+        camsSerNo:
+          type: integer
+          description: Unique reference for each cam record
+          format: int64
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int64
+        recoveryType:
+          type: string
+          description: Recovery Type
+          nullable: true
+        recoveryStatus:
+          type: string
+          description: Recovery Status
+          nullable: true
+        pin:
+          type: integer
+          description: Pin
+          format: int64
+        recordStatus:
+          type: string
+          description: Recovery status
+          nullable: true
+        recoveryReply:
+          type: string
+          description: Recovery Reply
+          nullable: true
+      additionalProperties: false
+      description: Cams Recovery Data
+    Party:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int32
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        pin:
+          type: integer
+          description: Claimant PIN
+          format: int64
+        name:
+          type: string
+          description: Claimant Name
+          nullable: true
+        repairStatus:
+          allOf:
+            - $ref: '#/components/schemas/RepairStatus'
+          description: >-
+            Repair Status Applicable for Our Insured Vehicle "A" = Auhtorized
+            for Repair "R" = Ready for Pick up "P" = Picked up by Client
+        statusNotes:
+          type: string
+          description: Status Notes Applicable for Our Insured Vehicle
+          nullable: true
+        claimedAmount:
+          type: number
+          description: Claimed Amount
+          format: double
+        camsStatus:
+          type: string
+          description: CAMS Status
+          nullable: true
+        camsReply:
+          type: string
+          description: CAMS Reply
+          nullable: true
+        hasRequirements:
+          type: boolean
+          description: Claimant Has Requirements?
+        requirementsReceived:
+          type: boolean
+          description: Requirements Received Applicable when HasRequirements = true
+        requirementsReceivedOn:
+          type: string
+          description: >-
+            Date when the last requirement is received Applicable when
+            HasRequirements = true
+          format: date-time
+        settled:
+          type: boolean
+          description: Claimant payments are settled?
+        settledOn:
+          type: string
+          description: >-
+            Date when the Claimant payments are settled Applicable when Settled
+            = true
+          format: date-time
+        firstEvaluation:
+          type: string
+          description: 'date time of first evaluation Format: DD/MM/YYYY HH:MM:SS'
+          format: date-time
+        vehicleDetails:
+          allOf:
+            - $ref: '#/components/schemas/VehicleDetails'
+          description: Vehicle Details
+          nullable: true
+        nonVehicleDetails:
+          allOf:
+            - $ref: '#/components/schemas/NonVehicleDetails'
+          description: Non Vehicle Details
+          nullable: true
+        additionalInfo:
+          allOf:
+            - $ref: '#/components/schemas/AdditionalInfo'
+          description: Additional Information
+          nullable: true
+        camsRecoveries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CamsRecovery'
+          description: List of Cams Recovery
+          nullable: true
+      additionalProperties: false
+      description: Party Details output structure
+    GetClaimDetailsResponse:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        claimants:
+          type: string
+          description: Claimants
+          nullable: true
+        reportType:
+          type: integer
+          description: Report Type
+          format: int64
+        policyReport:
+          type: string
+          description: 'Police Report number: Najm,Morour,â€¦'
+          nullable: true
+        nnVehicleID:
+          type: string
+          description: NajmNet Vehicle ID
+          nullable: true
+        policyHolderID:
+          type: string
+          description: Policy Holder ID Number
+          nullable: true
+        claimType:
+          type: string
+          description: Claim Type
+          nullable: true
+        claimCause:
+          type: string
+          description: Claim Cause
+          nullable: true
+        partialLoss:
+          type: boolean
+          description: is the claim a partial loss claim
+        repairOption:
+          type: string
+          description: Authority/Network Applicable when PartialLoss = true
+          nullable: true
+        garage:
+          type: string
+          description: >-
+            Garage where the Car will be repaired Applicable when RepairOption =
+            "Network"
+          nullable: true
+        totalLoss:
+          type: boolean
+          description: is the claim Total LossClaims
+        totalLossLocation:
+          type: string
+          description: Applicable when TotalLoss = true
+          nullable: true
+        placeOccured:
+          type: string
+          description: Place where the Accident Occurred
+          nullable: true
+        placeOccuredNotes:
+          type: string
+          description: Notes for Place Occurred
+          nullable: true
+        accidentDetails:
+          type: string
+          description: Accident details
+          nullable: true
+        claimEvaluation:
+          type: number
+          description: Claim Evaluation Amount
+          format: double
+        feesEvaluation:
+          type: number
+          description: Fees Evaluation Amount
+          format: double
+        recoveryEvaluation:
+          type: number
+          description: Recovery Evaluation Amount
+          format: double
+        claimPaid:
+          type: number
+          description: Claim Paid Amount
+          format: double
+        feesPaid:
+          type: number
+          description: Fees Paid Amount
+          format: double
+        recoveryPaid:
+          type: number
+          description: Recovery Paid Amount
+          format: double
+        claimedAmount:
+          type: number
+          description: Claimed Amount
+          format: double
+        deductibleAmount:
+          type: number
+          description: Deductible Amount
+          format: double
+        fraud:
+          type: boolean
+          description: is Fraud
+        rejected:
+          type: boolean
+          description: is Rejected
+        disputed:
+          type: boolean
+          description: is Disputed
+        isXGracia:
+          type: boolean
+          description: is XGracia
+        claimParties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Party'
+          description: List of "Party"
+          nullable: true
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Claim Details response structure
+    TransactionType:
+      enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '5'
+      type: string
+      description: Transaction Type
+    TransactionDetail:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        trnSequence:
+          type: integer
+          description: Transaction Sequence
+          format: int64
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        itemCode:
+          type: string
+          description: Item Code
+          nullable: true
+        pin:
+          type: integer
+          description: Payee PIN
+          format: int64
+        name:
+          type: string
+          description: Payee Name
+          nullable: true
+        coverCode:
+          type: string
+          description: Cover Code
+          nullable: true
+        currencyCode:
+          type: string
+          description: Currency Code
+          nullable: true
+        amount:
+          type: number
+          description: Paid Amount
+          format: double
+        evaluationAmount:
+          type: number
+          description: Evaluation Amount
+          format: double
+      additionalProperties: false
+      description: Transaction Detail
+    RecoveryDetail:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        trnSequence:
+          type: integer
+          description: Transaction Sequence
+          format: int64
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        recoveryTypeCode:
+          type: string
+          description: Recovery Type Code
+          nullable: true
+        pin:
+          type: integer
+          description: Payer PIN
+          format: int64
+        name:
+          type: string
+          description: Payer Name
+          nullable: true
+        recoveryDetails:
+          type: string
+          description: Recovery Details
+          nullable: true
+        coverCode:
+          type: string
+          description: Cover Code
+          nullable: true
+        currencyCode:
+          type: string
+          description: Currency Code
+          nullable: true
+        amount:
+          type: number
+          description: Recovery Evaluation Amount
+          format: double
+      additionalProperties: false
+      description: Recovery Detail
+    Transaction:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int64
+        settlementReference:
+          type: string
+          description: Settlement Reference
+          nullable: true
+          example: 'Sample : CPD#55655'
+        trnSequence:
+          type: integer
+          description: Transaction Sequence
+          format: int64
+        trnType:
+          allOf:
+            - $ref: '#/components/schemas/TransactionType'
+          description: Transaction Type
+        trnSerial:
+          type: integer
+          description: Transaction Serial Number
+          format: int64
+        trnDate:
+          type: string
+          description: Transaction Date
+          format: date-time
+        pin:
+          type: integer
+          description: Payee/Payer PIN
+          format: int64
+        claimantName:
+          type: string
+          description: Claimant Name
+          nullable: true
+        trnDescription:
+          type: string
+          description: Transaction Notes
+          nullable: true
+        currencyCode:
+          type: string
+          description: Transaction Currency
+          nullable: true
+        amount:
+          type: number
+          description: Transaction Amount
+          format: double
+        feesEvaluation:
+          type: number
+          description: Fees Evaluation
+          format: double
+        recoveryEvaluation:
+          type: number
+          description: Recovery Evaluation
+          format: double
+        cancelled:
+          type: boolean
+          description: if the Transaction is Cancelled/it is a a cancellation
+        cancelTrnSerial:
+          type: integer
+          description: >-
+            TrnSerial of the Cancelling trasaction or the TrnSerial of the
+            cancelled transaction
+          format: int64
+        vat:
+          type: boolean
+          description: is VAT Applicable?
+        vatAmount:
+          type: number
+          description: VAT Amount
+          format: double
+        vatType:
+          type: string
+          description: VAT Type
+          nullable: true
+        transactionDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionDetail'
+          description: List of Transaction Detail
+          nullable: true
+        recoveryDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecoveryDetail'
+          description: List of Recovery Detail
+          nullable: true
+      additionalProperties: false
+      description: Transaction Data
+    GetTransactionDetailsResponse:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+          description: List of Transactions
+          nullable: true
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Transaction Details response structure
+    AddClaimantRequest:
+      required:
+        - certificateNo
+        - claimSerNo
+        - externalReference
+        - polSerNo
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        polSerNo:
+          type: integer
+          description: Policy Serial Number
+          format: int64
+        certificateNo:
+          type: integer
+          description: Certificate Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type V = Vehicles T = Non - Vehicles
+        imsUserID:
+          type: string
+          description: IMS User Id
+          nullable: true
+        externalReference:
+          type: string
+          description: External Reference
+        vehicleDetails:
+          allOf:
+            - $ref: '#/components/schemas/VehicleDetails'
+          description: Vehicle Details
+          nullable: true
+        claimantDetails:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantDetails'
+          description: Claimant Details
+          nullable: true
+        nonVehicleDetails:
+          allOf:
+            - $ref: '#/components/schemas/NonVehicleDetails'
+          description: Non Vehicle Details
+          nullable: true
+        additionalInfo:
+          allOf:
+            - $ref: '#/components/schemas/AdditionalInfo'
+          description: Additional Information
+          nullable: true
+      additionalProperties: false
+      description: Add Claimant Request Structure
+    AddClaimantResponse:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        polSerNo:
+          type: integer
+          description: Policy Serial Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int64
+        pin:
+          type: integer
+          description: Pin
+          format: int64
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Add Claimant Response Structure
+    UpdateClaimantRequest:
+      required:
+        - certificateNo
+        - claimantNo
+        - claimSerNo
+        - externalReference
+        - polSerNo
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          format: int64
+        polSerNo:
+          type: integer
+          description: Policy Serial Number
+          format: int64
+        certificateNo:
+          type: integer
+          description: Certificate Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int64
+        externalReference:
+          type: string
+          description: External Reference
+        vehicleDetails:
+          allOf:
+            - $ref: '#/components/schemas/VehicleDetails'
+          description: Vehicle Details
+          nullable: true
+        claimantDetails:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantDetails'
+          description: Claimant Details
+          nullable: true
+        nonVehicleDetails:
+          allOf:
+            - $ref: '#/components/schemas/NonVehicleDetails'
+          description: Non Vehicle Details
+          nullable: true
+        additionalInfo:
+          allOf:
+            - $ref: '#/components/schemas/AdditionalInfo'
+          description: Additional Information
+          nullable: true
+      additionalProperties: false
+      description: Update Claimant Request Structure
+    UpdateClaimantResponse:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          description: Claim Serial Number
+          format: int64
+        polSerNo:
+          type: integer
+          description: Policy Serial Number
+          format: int64
+        claimantType:
+          allOf:
+            - $ref: '#/components/schemas/ClaimantType'
+          description: Claimant Type
+        claimantNo:
+          type: integer
+          description: Claimant Number
+          format: int64
+        pin:
+          type: integer
+          description: Pin
+          format: int64
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Update Claimant Response Structure
+    ClaimSerial:
+      type: object
+      properties:
+        claimSerNo:
+          type: integer
+          format: int64
+      additionalProperties: false
+    ClaimUpdate:
+      type: object
+      properties:
+        claim:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClaimSerial'
+          nullable: true
+      additionalProperties: false
+    ClaimUpdateRequest:
+      type: object
+      properties:
+        imsReference:
+          type: string
+          nullable: true
+        claimUpdate:
+          allOf:
+            - $ref: '#/components/schemas/ClaimUpdate'
+          nullable: true
+      additionalProperties: false
+    CdcStatus:
+      enum:
+        - Approved
+        - InsuranceIssued
+        - InsuranceDeleted
+      type: string
+      description: Response that represents the stauts of the reuqested CDC.
+    CdcNationalAddressResponse:
+      type: object
+      properties:
+        cityID:
+          type: integer
+          description: City ID
+          format: int32
+        cityName:
+          type: string
+          description: City Name
+          nullable: true
+        cityNameEn:
+          type: string
+          description: City Name in English
+          nullable: true
+        district:
+          type: string
+          description: District Name
+          nullable: true
+        districtEn:
+          type: string
+          description: District Name in English
+          nullable: true
+        buildingNumber:
+          type: integer
+          description: Building Number
+          format: int32
+        additionalNumber:
+          type: integer
+          description: Additional Number
+          format: int32
+        zipCode:
+          type: integer
+          description: Zip Code
+          format: int32
+        unitNo:
+          type: integer
+          description: Unit Number
+          format: int32
+        streetName:
+          type: string
+          description: Street Name
+          nullable: true
+        streetNameEn:
+          type: string
+          description: Street Name in English
+          nullable: true
+      additionalProperties: false
+      description: CDC National Address structure
+    CdcApprovalInquiryResponse:
+      type: object
+      properties:
+        status:
+          allOf:
+            - $ref: '#/components/schemas/CdcStatus'
+          description: Response that represents the stauts of the reuqested CDC.
+        companyName:
+          type: string
+          description: Company Name that owns the CDC
+          nullable: true
+        branchName:
+          type: string
+          description: Branch of the company that owns the CDC
+          nullable: true
+        moiNumber:
+          type: string
+          description: >-
+            MOI Number of the copmany that owns the CDC. Also known as 700
+            number.
+          nullable: true
+        nationalAddress:
+          allOf:
+            - $ref: '#/components/schemas/CdcNationalAddressResponse'
+          description: CDC National Address structure
+          nullable: true
+        issueDate:
+          type: string
+          description: The CDC Issue Date (Gregorian).
+          format: date-time
+        expiryDate:
+          type: string
+          description: The CDC Expiry Date (Gregorian).
+          format: date-time
+        hijriIssueDate:
+          type: string
+          description: The CDC Issue Date (Hijri).
+          nullable: true
+        hijriExpiryDate:
+          type: string
+          description: The CDC Expiry Date (Hijri).
+          nullable: true
+      additionalProperties: false
+      description: Response that represents the stauts of the reuqested CDC.
+    LovRecord:
+      type: object
+      properties:
+        tableName:
+          type: string
+          description: Table Name
+          nullable: true
+        code:
+          type: string
+          description: Code
+          nullable: true
+        latinDescription:
+          type: string
+          description: Latin Description
+          nullable: true
+        arabicDescription:
+          type: string
+          description: Arabic Description
+          nullable: true
+        parentCode:
+          type: string
+          description: Parent Code
+          nullable: true
+        action:
+          type: string
+          description: Action
+          nullable: true
+      additionalProperties: false
+      description: List Of Values Record
+    ListOfValuesSyncRequest:
+      type: object
+      properties:
+        imsReference:
+          type: string
+          description: IMS Reference
+          nullable: true
+        lovRecord:
+          allOf:
+            - $ref: '#/components/schemas/LovRecord'
+          description: List Of Values Record
+          nullable: true
+      additionalProperties: false
+      description: List Of Values Sync Request Structure
+    ListOfValuesSyncResponse:
+      type: object
+      properties:
+        externalReference:
+          type: string
+          description: External Reference
+          nullable: true
+        status:
+          type: boolean
+          description: Status of the call
+        remarks:
+          type: string
+          description: Remarks in case the response had any
+          nullable: true
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: List Of Values Sync Response Structure
+    PaymentApprovalRequest:
+      required:
+        - claimRef
+        - externalReference
+        - imsSettlementRef
+      type: object
+      properties:
+        externalReference:
+          type: string
+          description: External Reference
+        claimRef:
+          type: string
+          description: Claim Reference Number
+        imsSettlementRef:
+          type: string
+          description: IMS Settelement Reference
+        workflowRef:
+          type: string
+          description: Work Flow Reference No
+          nullable: true
+        trnAmount:
+          type: number
+          description: Transaction Amount
+          format: double
+        trnCurency:
+          type: string
+          description: Transaction Currency
+          nullable: true
+        paymentPIN:
+          type: integer
+          description: Payment Pin
+          format: int64
+        paymentPINName:
+          type: string
+          description: Payment Pin Name
+          nullable: true
+        scndApprovalUserID:
+          type: string
+          description: Second Approval IMS User ID
+          nullable: true
+        scndApprovalDate:
+          type: string
+          description: Second Approval On
+          nullable: true
+      additionalProperties: false
+      description: Payment Approval Request Structure
+    PaymentApprovalResponse:
+      type: object
+      properties:
+        claimRef:
+          type: string
+          description: Claim Reference Number
+          nullable: true
+        approved:
+          type: boolean
+          description: is Payment Approved
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Payment Approval Response Structure
+    DoublePin:
+      type: object
+      properties:
+        oldPin:
+          type: integer
+          description: Old Person's Pin
+          format: int64
+        newPin:
+          type: integer
+          description: New Person's Pin
+          format: int64
+      additionalProperties: false
+      description: Double Pin Structure
+    PinUpdate:
+      type: object
+      properties:
+        doublePin:
+          type: array
+          items:
+            $ref: '#/components/schemas/DoublePin'
+          description: List of Double Pins
+          nullable: true
+      additionalProperties: false
+      description: Pin Update
+    PinUpdateRequest:
+      type: object
+      properties:
+        imsReference:
+          type: string
+          description: IMS Reference
+          nullable: true
+        pinUpdate:
+          allOf:
+            - $ref: '#/components/schemas/PinUpdate'
+          description: Pin Update
+          nullable: true
+      additionalProperties: false
+      description: Pin Update Request Structure
+    PinUpdateResponse:
+      type: object
+      properties:
+        externalReference:
+          type: string
+          description: External Reference
+          nullable: true
+        status:
+          type: boolean
+          description: Status of the call
+        remarks:
+          type: string
+          description: Remarks in case the response had any
+          nullable: true
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Pin Update Response Structure
+    PropertyInfo:
+      required:
+        - requestNumber
+        - verificationCode
+      type: object
+      properties:
+        requestNumber:
+          maxLength: 14
+          minLength: 14
+          type: string
+          description: 'The CDC Request Number, this field is provided by the customer.'
+        verificationCode:
+          maxLength: 5
+          minLength: 5
+          type: string
+          description: 'The CDC Verification Code, this field is provided by the customer.'
+      additionalProperties: false
+      description: Property Info structure
+    InsurancePolicyType:
+      enum:
+        - Motor
+        - Property
+      type: string
+      description: Insurance Policy Type
+    AddPolicyRequest:
+      required:
+        - effectiveDate
+        - expiryDate
+        - issueDate
+        - policyNumber
+        - policyType
+        - properties
+      type: object
+      properties:
+        properties:
+          maxLength: 1
+          minLength: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/PropertyInfo'
+          description: >-
+            A list of Properties to include in the policy. This will currently
+            accept only one entry per policy due to Salamah platform limitation.
+        policyNumber:
+          maxLength: 100
+          minLength: 3
+          type: string
+          description: Insurance Policy Number
+        subPolicyNumber:
+          type: string
+          description: Sub Insurance Policy Number
+          nullable: true
+        issueDate:
+          type: string
+          description: Policy Issue Date.
+          format: date-time
+        effectiveDate:
+          type: string
+          description: Policy Effective Date.
+          format: date-time
+        expiryDate:
+          type: string
+          description: Policy Expiry Date.
+          format: date-time
+        policyType:
+          allOf:
+            - $ref: '#/components/schemas/InsurancePolicyType'
+          description: Insurance Policy Type
+      additionalProperties: false
+      description: The details of the policy and CDC Approval
+    InsurancePolicy:
+      required:
+        - effectiveDate
+        - expiryDate
+        - issueDate
+        - policyNumber
+      type: object
+      properties:
+        policyNumber:
+          maxLength: 100
+          minLength: 3
+          type: string
+          description: Insurance Policy Number
+        subPolicyNumber:
+          type: string
+          description: Sub Insurance Policy Number
+          nullable: true
+        issueDate:
+          type: string
+          description: Policy Issue Date.
+          format: date-time
+        effectiveDate:
+          type: string
+          description: Policy Effective Date
+          format: date-time
+        expiryDate:
+          type: string
+          description: Policy Expiry Date
+          format: date-time
+        policyType:
+          allOf:
+            - $ref: '#/components/schemas/InsurancePolicyType'
+          description: Insurance Policy Type
+        nationalAddressesIds:
+          type: array
+          items:
+            type: string
+          description: Najm field.
+          nullable: true
+        id:
+          type: string
+          description: >-
+            Unique identifier of the Object created. Make sure to store this for
+            future use. Never Fill this field. It will always be ignored.
+          nullable: true
+      additionalProperties: false
+      description: Return structure of the Insurance Policy creation
+    SearchPolicyRequest:
+      required:
+        - certificateNo
+        - claimDate
+        - claimTime
+        - externalReference
+        - policyNo
+        - product
+        - vehicleDefinitionType
+      type: object
+      properties:
+        externalReference:
+          type: string
+          description: External Reference
+        product:
+          type: string
+          description: Policy Product Code
+        policyNo:
+          type: integer
+          description: Policy Number
+          format: int64
+        certificateNo:
+          type: integer
+          description: Certificate Number
+          format: int64
+        vehicleDefinitionType:
+          type: string
+          description: Vehicle Definition Type
+          example: "P = PlateType and Plate Sequence \r\nC = CustomID"
+        plateNo:
+          type: string
+          description: Required when VehicleDefinitionType = "P"
+          nullable: true
+        plateChar1:
+          type: string
+          description: Required when VehicleDefinitionType = "P"
+          nullable: true
+        plateChar2:
+          type: string
+          description: Required when VehicleDefinitionType = "P"
+          nullable: true
+        plateChar3:
+          type: string
+          description: Required when VehicleDefinitionType = "P"
+          nullable: true
+        plateSequence:
+          type: string
+          description: Required when VehicleDefinitionType = "P"
+          nullable: true
+        customID:
+          type: string
+          description: Required when VehicleDefinitionType = "C"
+          nullable: true
+        claimDate:
+          type: string
+          description: Claim Date
+        claimTime:
+          type: string
+          description: Claim Time
+      additionalProperties: false
+      description: Search Policy Request Structure
+    SearchPolicyResponse:
+      type: object
+      properties:
+        polSerno:
+          type: integer
+          description: Policy Serial Number
+          format: int64
+        product:
+          type: string
+          description: Policy Product Code
+          nullable: true
+        policyNo:
+          type: integer
+          description: Policy Number
+          format: int64
+        certificateNo:
+          type: integer
+          description: Certificate Number
+          format: int64
+        smaSerno:
+          type: integer
+          description: Certificate Serial No
+          format: int64
+        inception:
+          type: string
+          description: 'Certificate Inception Date Format: YYYY-MM-DD'
+          format: date-time
+        expiry:
+          type: string
+          description: 'Certificate Expiry Date Format: YYYY-MM-DD'
+          format: date-time
+        insuredPIN:
+          type: integer
+          description: Insured Pin
+          format: int64
+        insuredName:
+          type: string
+          description: Insured Name
+          nullable: true
+        underwritingYear:
+          type: integer
+          description: Under writing year
+          format: int64
+        agencyNo:
+          type: integer
+          description: Agnecy Number
+          format: int64
+        agencyName:
+          type: string
+          description: Agency Name
+          nullable: true
+        agentCode:
+          type: string
+          description: Agent Code
+          nullable: true
+        agentName:
+          type: string
+          description: Agent Name
+          nullable: true
+        reference:
+          type: integer
+          description: IMS Response Reference
+          format: int64
+        vehicleMakeCode:
+          type: string
+          description: Vehicle Make Code as per IMS Codes
+          nullable: true
+        vehicleModelCode:
+          type: string
+          description: Vehicle Model Code as per IMS Codes
+          nullable: true
+        year:
+          type: integer
+          description: Year
+          format: int64
+        sumInsured:
+          type: integer
+          description: Sum Insured
+          format: int64
+        deductible:
+          type: integer
+          description: Deductible
+          format: int64
+        chassisNumber:
+          type: string
+          description: Chassis Number
+          nullable: true
+        sequenceNumber:
+          type: string
+          description: Sequence Number
+          nullable: true
+        plateNo:
+          type: string
+          description: Plate Number
+          nullable: true
+        plateChar1:
+          type: string
+          description: Plate Character
+          nullable: true
+        plateChar2:
+          type: string
+          description: Plate Character
+          nullable: true
+        plateChar3:
+          type: string
+          description: Plate Character
+          nullable: true
+        typeofRepair:
+          type: string
+          description: Type Of Repair
+          nullable: true
+        customID:
+          type: string
+          description: Custom Number
+          nullable: true
+        internalReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Search Policy Response Structure
