@@ -1,0 +1,38 @@
+get:
+  tags:
+    - Inquiries
+  summary: Inquires for the CDC approval status.
+  parameters:
+    - name: requestNumber
+      in: query
+      description: 'The CDC Request Number, this field is provided by the customer.'
+      schema:
+        type: string
+    - name: verificationCode
+      in: query
+      description: 'The CDC Verification Code, this field is provided by the customer.'
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\CdcApprovalInquiryResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access

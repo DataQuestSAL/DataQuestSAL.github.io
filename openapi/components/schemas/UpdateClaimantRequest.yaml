@@ -1,0 +1,51 @@
+required:
+  - certificateNo
+  - claimantNo
+  - claimSerNo
+  - externalReference
+  - polSerNo
+type: object
+properties:
+  claimSerNo:
+    type: integer
+    format: int64
+  polSerNo:
+    type: integer
+    description: Policy Serial Number
+    format: int64
+  certificateNo:
+    type: integer
+    description: Certificate Number
+    format: int64
+  claimantType:
+    allOf:
+      - $ref: .\ClaimantType.yaml
+  claimantNo:
+    type: integer
+    description: Claimant Number
+    format: int64
+  externalReference:
+    type: string
+    description: External Reference
+  vehicleDetails:
+    allOf:
+      - $ref: .\VehicleDetails.yaml
+    description: Vehicle Details
+    nullable: true
+  claimantDetails:
+    allOf:
+      - $ref: .\ClaimantDetails.yaml
+    description: Claimant Details
+    nullable: true
+  nonVehicleDetails:
+    allOf:
+      - $ref: .\NonVehicleDetails.yaml
+    description: Non Vehicle Details
+    nullable: true
+  additionalInfo:
+    allOf:
+      - $ref: .\AdditionalInfo.yaml
+    description: Additional Information
+    nullable: true
+additionalProperties: false
+description: Update Claimant Request Structure

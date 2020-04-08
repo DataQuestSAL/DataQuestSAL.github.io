@@ -1,0 +1,45 @@
+required:
+  - claimRef
+  - externalReference
+  - imsSettlementRef
+type: object
+properties:
+  externalReference:
+    type: string
+    description: External Reference
+  claimRef:
+    type: string
+    description: Claim Reference Number
+  imsSettlementRef:
+    type: string
+    description: IMS Settelement Reference
+  workflowRef:
+    type: string
+    description: Work Flow Reference No
+    nullable: true
+  trnAmount:
+    type: number
+    description: Transaction Amount
+    format: double
+  trnCurency:
+    type: string
+    description: Transaction Currency
+    nullable: true
+  paymentPIN:
+    type: integer
+    description: Payment Pin
+    format: int64
+  paymentPINName:
+    type: string
+    description: Payment Pin Name
+    nullable: true
+  scndApprovalUserID:
+    type: string
+    description: Second Approval IMS User ID
+    nullable: true
+  scndApprovalDate:
+    type: string
+    description: Second Approval On
+    nullable: true
+additionalProperties: false
+description: Payment Approval Request Structure

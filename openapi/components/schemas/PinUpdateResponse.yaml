@@ -1,0 +1,18 @@
+type: object
+properties:
+  externalReference:
+    type: string
+    description: External Reference
+    nullable: true
+  status:
+    type: boolean
+    description: Status of the call
+  remarks:
+    type: string
+    description: Remarks in case the response had any
+    nullable: true
+  internalReference:
+    type: string
+    nullable: true
+additionalProperties: false
+description: Pin Update Response Structure

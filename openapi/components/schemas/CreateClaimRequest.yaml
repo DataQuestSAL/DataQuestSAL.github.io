@@ -1,0 +1,116 @@
+required:
+  - certificateNo
+  - externalReference
+  - polSerNo
+type: object
+properties:
+  polSerNo:
+    type: integer
+    description: Policy Serial Number
+    format: int64
+  certificateNo:
+    type: integer
+    description: Certificate Number
+    format: int64
+  smaSerNo:
+    type: integer
+    description: Certificate Serial No
+    format: int64
+  claimDate:
+    type: string
+    description: Claim Date
+    nullable: true
+  claimTime:
+    type: string
+    description: Claim Time
+    nullable: true
+  declarationDate:
+    type: string
+    description: Declaration Date
+    nullable: true
+  isXGracia:
+    type: boolean
+    description: Is Xgracia
+  claimants:
+    type: string
+    description: Claimants
+    nullable: true
+  claimantType:
+    allOf:
+      - $ref: .\ClaimantType.yaml
+    description: Claimant Type
+  reportType:
+    type: integer
+    description: Report Type
+    format: int64
+  policeReport:
+    type: string
+    description: 'Police Report number: Najm,Morour,â€¦'
+    nullable: true
+  claimType:
+    type: string
+    description: Claim Type
+    nullable: true
+  claimClause:
+    type: string
+    description: Claim Clause
+    nullable: true
+  partialLoss:
+    type: boolean
+    description: is the claim a partial loss claim
+  repairOption:
+    type: string
+    description: Repair Option
+    nullable: true
+  garage:
+    type: string
+    description: Garage where the Car will be repaired
+    nullable: true
+  totalLoss:
+    type: boolean
+    description: is the claim Total LossClaims
+  totalLossLocation:
+    type: string
+    description: Total Loss Location
+    nullable: true
+  placeOccured:
+    type: string
+    description: Place where the Accident Occurred
+    nullable: true
+  placeOccuredNotes:
+    type: string
+    description: Place where the Accident Occurred
+    nullable: true
+  accidentDetails:
+    type: string
+    description: Accident details
+    nullable: true
+  imsUserID:
+    type: string
+    description: IMS User ID
+    nullable: true
+  externalReference:
+    type: string
+    description: External Reference
+  vehicleDetails:
+    allOf:
+      - $ref: .\VehicleDetails.yaml
+    description: Vehicle Details
+    nullable: true
+  claimantDetails:
+    allOf:
+      - $ref: .\ClaimantDetails.yaml
+    description: Claimant Details
+    nullable: true
+  nonVehicleDetails:
+    allOf:
+      - $ref: .\NonVehicleDetails.yaml
+    description: Non Vehicle Details
+    nullable: true
+  additionalInfo:
+    allOf:
+      - $ref: .\AdditionalInfo.yaml
+    description: Additional Information
+    nullable: true
+additionalProperties: false
+description: Creat Claim Request Structure

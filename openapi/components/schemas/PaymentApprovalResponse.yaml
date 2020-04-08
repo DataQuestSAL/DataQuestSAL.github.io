@@ -1,0 +1,14 @@
+type: object
+properties:
+  claimRef:
+    type: string
+    description: Claim Reference Number
+    nullable: true
+  approved:
+    type: boolean
+    description: is Payment Approved
+  internalReference:
+    type: string
+    nullable: true
+additionalProperties: false
+description: Payment Approval Response Structure

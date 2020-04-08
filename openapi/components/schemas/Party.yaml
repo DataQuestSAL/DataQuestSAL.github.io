@@ -1,0 +1,90 @@
+type: object
+properties:
+  claimSerNo:
+    type: integer
+    description: Claim Serial Number
+    format: int64
+  claimantNo:
+    type: integer
+    description: Claimant Number
+    format: int32
+  claimantType:
+    allOf:
+      - $ref: .\ClaimantType.yaml
+    description: Claimant Type
+  pin:
+    type: integer
+    description: Claimant PIN
+    format: int64
+  name:
+    type: string
+    description: Claimant Name
+    nullable: true
+  repairStatus:
+    allOf:
+      - $ref: .\RepairStatus.yaml
+    description: >-
+      Repair Status Applicable for Our Insured Vehicle "A" = Auhtorized for
+      Repair "R" = Ready for Pick up "P" = Picked up by Client
+  statusNotes:
+    type: string
+    description: Status Notes Applicable for Our Insured Vehicle
+    nullable: true
+  claimedAmount:
+    type: number
+    description: Claimed Amount
+    format: double
+  camsStatus:
+    type: string
+    description: CAMS Status
+    nullable: true
+  camsReply:
+    type: string
+    description: CAMS Reply
+    nullable: true
+  hasRequirements:
+    type: boolean
+    description: Claimant Has Requirements?
+  requirementsReceived:
+    type: boolean
+    description: Requirements Received Applicable when HasRequirements = true
+  requirementsReceivedOn:
+    type: string
+    description: >-
+      Date when the last requirement is received Applicable when HasRequirements
+      = true
+    format: date-time
+  settled:
+    type: boolean
+    description: Claimant payments are settled?
+  settledOn:
+    type: string
+    description: Date when the Claimant payments are settled Applicable when Settled = true
+    format: date-time
+  firstEvaluation:
+    type: string
+    description: 'date time of first evaluation Format: DD/MM/YYYY HH:MM:SS'
+    format: date-time
+  vehicleDetails:
+    allOf:
+      - $ref: .\VehicleDetails.yaml
+    description: Vehicle Details
+    nullable: true
+  nonVehicleDetails:
+    allOf:
+      - $ref: .\NonVehicleDetails.yaml
+    description: Non Vehicle Details
+    nullable: true
+  additionalInfo:
+    allOf:
+      - $ref: .\AdditionalInfo.yaml
+    description: Additional Information
+    nullable: true
+  camsRecoveries:
+    type: array
+    items:
+      $ref: .\CamsRecovery.yaml
+    description: List of Cams Recovery
+    nullable: true
+additionalProperties: false
+description: Party Details output structure

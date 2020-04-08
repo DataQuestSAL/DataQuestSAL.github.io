@@ -1,0 +1,60 @@
+required:
+  - certificateNo
+  - claimDate
+  - claimTime
+  - externalReference
+  - policyNo
+  - product
+  - vehicleDefinitionType
+type: object
+properties:
+  externalReference:
+    type: string
+    description: External Reference
+  product:
+    type: string
+    description: Policy Product Code
+  policyNo:
+    type: integer
+    description: Policy Number
+    format: int64
+  certificateNo:
+    type: integer
+    description: Certificate Number
+    format: int64
+  vehicleDefinitionType:
+    type: string
+    description: Vehicle Definition Type
+    example: "P = PlateType and Plate Sequence \r\nC = CustomID"
+  plateNo:
+    type: string
+    description: Required when VehicleDefinitionType = "P"
+    nullable: true
+  plateChar1:
+    type: string
+    description: Required when VehicleDefinitionType = "P"
+    nullable: true
+  plateChar2:
+    type: string
+    description: Required when VehicleDefinitionType = "P"
+    nullable: true
+  plateChar3:
+    type: string
+    description: Required when VehicleDefinitionType = "P"
+    nullable: true
+  plateSequence:
+    type: string
+    description: Required when VehicleDefinitionType = "P"
+    nullable: true
+  customID:
+    type: string
+    description: Required when VehicleDefinitionType = "C"
+    nullable: true
+  claimDate:
+    type: string
+    description: Claim Date
+  claimTime:
+    type: string
+    description: Claim Time
+additionalProperties: false
+description: Search Policy Request Structure

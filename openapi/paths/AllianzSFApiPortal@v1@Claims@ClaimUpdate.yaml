@@ -1,0 +1,33 @@
+post:
+  tags:
+    - Claims
+  summary: Update info about a certain Claim
+  requestBody:
+    description: Structure holding infromation about the Claim Update
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\ClaimUpdateRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\UpdateClaimantResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access

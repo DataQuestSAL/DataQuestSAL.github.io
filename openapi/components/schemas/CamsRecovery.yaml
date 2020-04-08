@@ -1,0 +1,40 @@
+type: object
+properties:
+  camsSerNo:
+    type: integer
+    description: Unique reference for each cam record
+    format: int64
+  claimSerNo:
+    type: integer
+    description: Claim Serial Number
+    format: int64
+  claimantType:
+    allOf:
+      - $ref: .\ClaimantType.yaml
+    description: Claimant Type
+  claimantNo:
+    type: integer
+    description: Claimant Number
+    format: int64
+  recoveryType:
+    type: string
+    description: Recovery Type
+    nullable: true
+  recoveryStatus:
+    type: string
+    description: Recovery Status
+    nullable: true
+  pin:
+    type: integer
+    description: Pin
+    format: int64
+  recordStatus:
+    type: string
+    description: Recovery status
+    nullable: true
+  recoveryReply:
+    type: string
+    description: Recovery Reply
+    nullable: true
+additionalProperties: false
+description: Cams Recovery Data

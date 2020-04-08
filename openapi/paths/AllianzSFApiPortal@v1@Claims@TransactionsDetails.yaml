@@ -1,0 +1,41 @@
+get:
+  tags:
+    - Claims
+  summary: Retrieves the Transaction Details
+  parameters:
+    - name: claimserno
+      in: query
+      description: Claim Serial Number
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: externalReference
+      in: query
+      description: External Reference
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\GetTransactionDetailsResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access

@@ -1,0 +1,12 @@
+type: object
+properties:
+  oldPin:
+    type: integer
+    description: Old Person's Pin
+    format: int64
+  newPin:
+    type: integer
+    description: New Person's Pin
+    format: int64
+additionalProperties: false
+description: Double Pin Structure

@@ -1,0 +1,6 @@
+enum:
+  - ''
+  - K
+  - A
+type: string
+description: Payment Type

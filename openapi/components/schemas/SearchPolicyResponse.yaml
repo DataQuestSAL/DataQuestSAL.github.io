@@ -1,0 +1,119 @@
+type: object
+properties:
+  polSerno:
+    type: integer
+    description: Policy Serial Number
+    format: int64
+  product:
+    type: string
+    description: Policy Product Code
+    nullable: true
+  policyNo:
+    type: integer
+    description: Policy Number
+    format: int64
+  certificateNo:
+    type: integer
+    description: Certificate Number
+    format: int64
+  smaSerno:
+    type: integer
+    description: Certificate Serial No
+    format: int64
+  inception:
+    type: string
+    description: 'Certificate Inception Date Format: YYYY-MM-DD'
+    format: date-time
+  expiry:
+    type: string
+    description: 'Certificate Expiry Date Format: YYYY-MM-DD'
+    format: date-time
+  insuredPIN:
+    type: integer
+    description: Insured Pin
+    format: int64
+  insuredName:
+    type: string
+    description: Insured Name
+    nullable: true
+  underwritingYear:
+    type: integer
+    description: Under writing year
+    format: int64
+  agencyNo:
+    type: integer
+    description: Agnecy Number
+    format: int64
+  agencyName:
+    type: string
+    description: Agency Name
+    nullable: true
+  agentCode:
+    type: string
+    description: Agent Code
+    nullable: true
+  agentName:
+    type: string
+    description: Agent Name
+    nullable: true
+  reference:
+    type: integer
+    description: IMS Response Reference
+    format: int64
+  vehicleMakeCode:
+    type: string
+    description: Vehicle Make Code as per IMS Codes
+    nullable: true
+  vehicleModelCode:
+    type: string
+    description: Vehicle Model Code as per IMS Codes
+    nullable: true
+  year:
+    type: integer
+    description: Year
+    format: int64
+  sumInsured:
+    type: integer
+    description: Sum Insured
+    format: int64
+  deductible:
+    type: integer
+    description: Deductible
+    format: int64
+  chassisNumber:
+    type: string
+    description: Chassis Number
+    nullable: true
+  sequenceNumber:
+    type: string
+    description: Sequence Number
+    nullable: true
+  plateNo:
+    type: string
+    description: Plate Number
+    nullable: true
+  plateChar1:
+    type: string
+    description: Plate Character
+    nullable: true
+  plateChar2:
+    type: string
+    description: Plate Character
+    nullable: true
+  plateChar3:
+    type: string
+    description: Plate Character
+    nullable: true
+  typeofRepair:
+    type: string
+    description: Type Of Repair
+    nullable: true
+  customID:
+    type: string
+    description: Custom Number
+    nullable: true
+  internalReference:
+    type: string
+    nullable: true
+additionalProperties: false
+description: Search Policy Response Structure

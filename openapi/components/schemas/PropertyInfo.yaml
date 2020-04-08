@@ -1,0 +1,17 @@
+required:
+  - requestNumber
+  - verificationCode
+type: object
+properties:
+  requestNumber:
+    maxLength: 14
+    minLength: 14
+    type: string
+    description: 'The CDC Request Number, this field is provided by the customer.'
+  verificationCode:
+    maxLength: 5
+    minLength: 5
+    type: string
+    description: 'The CDC Verification Code, this field is provided by the customer.'
+additionalProperties: false
+description: Property Info structure

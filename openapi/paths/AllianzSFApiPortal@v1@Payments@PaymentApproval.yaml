@@ -1,0 +1,33 @@
+post:
+  tags:
+    - Payments
+  summary: Submit a payment approval
+  requestBody:
+    description: Structure needed to submit a payment approval
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\PaymentApprovalRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\PaymentApprovalResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access

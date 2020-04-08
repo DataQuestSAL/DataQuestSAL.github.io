@@ -1,0 +1,8 @@
+type: object
+properties:
+  claim:
+    type: array
+    items:
+      $ref: .\ClaimSerial.yaml
+    nullable: true
+additionalProperties: false

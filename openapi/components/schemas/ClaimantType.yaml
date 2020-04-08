@@ -1,0 +1,6 @@
+enum:
+  - ''
+  - V
+  - T
+type: string
+description: Claimant Types

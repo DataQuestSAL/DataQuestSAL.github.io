@@ -1,0 +1,41 @@
+type: object
+properties:
+  status:
+    allOf:
+      - $ref: .\CdcStatus.yaml
+    description: Response that represents the stauts of the reuqested CDC.
+  companyName:
+    type: string
+    description: Company Name that owns the CDC
+    nullable: true
+  branchName:
+    type: string
+    description: Branch of the company that owns the CDC
+    nullable: true
+  moiNumber:
+    type: string
+    description: MOI Number of the copmany that owns the CDC. Also known as 700 number.
+    nullable: true
+  nationalAddress:
+    allOf:
+      - $ref: .\CdcNationalAddressResponse.yaml
+    description: CDC National Address structure
+    nullable: true
+  issueDate:
+    type: string
+    description: The CDC Issue Date (Gregorian).
+    format: date-time
+  expiryDate:
+    type: string
+    description: The CDC Expiry Date (Gregorian).
+    format: date-time
+  hijriIssueDate:
+    type: string
+    description: The CDC Issue Date (Hijri).
+    nullable: true
+  hijriExpiryDate:
+    type: string
+    description: The CDC Expiry Date (Hijri).
+    nullable: true
+additionalProperties: false
+description: Response that represents the stauts of the reuqested CDC.

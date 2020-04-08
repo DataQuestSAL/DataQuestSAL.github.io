@@ -1,0 +1,72 @@
+type: object
+properties:
+  claimSerNo:
+    type: integer
+    description: Claim Serial Number
+    format: int64
+  subJournal:
+    type: string
+    description: Claim Sub Journal
+    nullable: true
+  year:
+    type: integer
+    description: Claim Year
+    format: int32
+  claimNo:
+    type: integer
+    description: Claim Number
+    format: int64
+  polSerNo:
+    type: integer
+    description: Policy Serial Number
+    format: int64
+  product:
+    type: string
+    description: Policy Product Code
+    nullable: true
+  policyNo:
+    type: integer
+    description: Policy Number
+    format: int64
+  certificateNo:
+    type: integer
+    description: Certificate Number
+    format: int64
+  claimDate:
+    type: string
+    description: Claim Date
+    format: date-time
+  claimTime:
+    type: string
+    description: Claim Time
+    nullable: true
+  declarationDate:
+    type: string
+    description: Claim Declaration Date
+    format: date-time
+  claimCreatedUserID:
+    type: string
+    description: Created By UserName
+    nullable: true
+  claimStatus:
+    type: string
+    description: Pending/Settled/Closed
+    nullable: true
+  noOfVehiclesInvolved:
+    type: integer
+    description: Number of Vehicles involved
+    format: int64
+  noNonVehicleInvolved:
+    type: integer
+    description: Number of Non Vehicles
+    format: int64
+  reportType:
+    type: integer
+    description: Report Type
+    format: int64
+  policeReport:
+    type: string
+    description: 'Police Report number: Najm,Morour,â€¦'
+    nullable: true
+additionalProperties: false
+description: Claims Structure

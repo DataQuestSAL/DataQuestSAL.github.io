@@ -1,0 +1,33 @@
+put:
+  tags:
+    - Persons
+  summary: Updating the Pin of a certain Person
+  requestBody:
+    description: Structure holding infromation about the Pin Update
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\PinUpdateRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\PinUpdateResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access

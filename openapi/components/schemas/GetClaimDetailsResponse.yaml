@@ -1,0 +1,121 @@
+type: object
+properties:
+  claimSerNo:
+    type: integer
+    description: Claim Serial Number
+    format: int64
+  claimants:
+    type: string
+    description: Claimants
+    nullable: true
+  reportType:
+    type: integer
+    description: Report Type
+    format: int64
+  policyReport:
+    type: string
+    description: 'Police Report number: Najm,Morour,â€¦'
+    nullable: true
+  nnVehicleID:
+    type: string
+    description: NajmNet Vehicle ID
+    nullable: true
+  policyHolderID:
+    type: string
+    description: Policy Holder ID Number
+    nullable: true
+  claimType:
+    type: string
+    description: Claim Type
+    nullable: true
+  claimCause:
+    type: string
+    description: Claim Cause
+    nullable: true
+  partialLoss:
+    type: boolean
+    description: is the claim a partial loss claim
+  repairOption:
+    type: string
+    description: Authority/Network Applicable when PartialLoss = true
+    nullable: true
+  garage:
+    type: string
+    description: >-
+      Garage where the Car will be repaired Applicable when RepairOption =
+      "Network"
+    nullable: true
+  totalLoss:
+    type: boolean
+    description: is the claim Total LossClaims
+  totalLossLocation:
+    type: string
+    description: Applicable when TotalLoss = true
+    nullable: true
+  placeOccured:
+    type: string
+    description: Place where the Accident Occurred
+    nullable: true
+  placeOccuredNotes:
+    type: string
+    description: Notes for Place Occurred
+    nullable: true
+  accidentDetails:
+    type: string
+    description: Accident details
+    nullable: true
+  claimEvaluation:
+    type: number
+    description: Claim Evaluation Amount
+    format: double
+  feesEvaluation:
+    type: number
+    description: Fees Evaluation Amount
+    format: double
+  recoveryEvaluation:
+    type: number
+    description: Recovery Evaluation Amount
+    format: double
+  claimPaid:
+    type: number
+    description: Claim Paid Amount
+    format: double
+  feesPaid:
+    type: number
+    description: Fees Paid Amount
+    format: double
+  recoveryPaid:
+    type: number
+    description: Recovery Paid Amount
+    format: double
+  claimedAmount:
+    type: number
+    description: Claimed Amount
+    format: double
+  deductibleAmount:
+    type: number
+    description: Deductible Amount
+    format: double
+  fraud:
+    type: boolean
+    description: is Fraud
+  rejected:
+    type: boolean
+    description: is Rejected
+  disputed:
+    type: boolean
+    description: is Disputed
+  isXGracia:
+    type: boolean
+    description: is XGracia
+  claimParties:
+    type: array
+    items:
+      $ref: .\Party.yaml
+    description: List of "Party"
+    nullable: true
+  internalReference:
+    type: string
+    nullable: true
+additionalProperties: false
+description: Claim Details response structure

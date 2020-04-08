@@ -1,0 +1,48 @@
+type: object
+properties:
+  claimSerNo:
+    type: integer
+    description: Claim Serial Number
+    format: int64
+  trnSequence:
+    type: integer
+    description: Transaction Sequence
+    format: int64
+  claimantNo:
+    type: integer
+    description: Claimant Number
+    format: int64
+  claimantType:
+    allOf:
+      - $ref: .\ClaimantType.yaml
+    description: Claimant Type
+  recoveryTypeCode:
+    type: string
+    description: Recovery Type Code
+    nullable: true
+  pin:
+    type: integer
+    description: Payer PIN
+    format: int64
+  name:
+    type: string
+    description: Payer Name
+    nullable: true
+  recoveryDetails:
+    type: string
+    description: Recovery Details
+    nullable: true
+  coverCode:
+    type: string
+    description: Cover Code
+    nullable: true
+  currencyCode:
+    type: string
+    description: Currency Code
+    nullable: true
+  amount:
+    type: number
+    description: Recovery Evaluation Amount
+    format: double
+additionalProperties: false
+description: Recovery Detail

@@ -1,0 +1,28 @@
+type: object
+properties:
+  liability:
+    type: number
+    description: Claimant's Liability
+    format: double
+  biType:
+    type: string
+    description: Bodily Injury Type
+    nullable: true
+  tpType:
+    type: string
+    description: Third Party Type
+    nullable: true
+  severityType:
+    type: string
+    description: Severity Type
+    nullable: true
+  propertyType:
+    type: string
+    description: Property Type
+    nullable: true
+  driverName:
+    type: string
+    description: Driver Name
+    nullable: true
+additionalProperties: false
+description: Non Vehicle Details

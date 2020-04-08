@@ -1,0 +1,13 @@
+type: object
+properties:
+  imsReference:
+    type: string
+    description: IMS Reference
+    nullable: true
+  lovRecord:
+    allOf:
+      - $ref: .\LovRecord.yaml
+    description: List Of Values Record
+    nullable: true
+additionalProperties: false
+description: List Of Values Sync Request Structure

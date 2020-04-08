@@ -1,0 +1,48 @@
+type: object
+properties:
+  cityID:
+    type: integer
+    description: City ID
+    format: int32
+  cityName:
+    type: string
+    description: City Name
+    nullable: true
+  cityNameEn:
+    type: string
+    description: City Name in English
+    nullable: true
+  district:
+    type: string
+    description: District Name
+    nullable: true
+  districtEn:
+    type: string
+    description: District Name in English
+    nullable: true
+  buildingNumber:
+    type: integer
+    description: Building Number
+    format: int32
+  additionalNumber:
+    type: integer
+    description: Additional Number
+    format: int32
+  zipCode:
+    type: integer
+    description: Zip Code
+    format: int32
+  unitNo:
+    type: integer
+    description: Unit Number
+    format: int32
+  streetName:
+    type: string
+    description: Street Name
+    nullable: true
+  streetNameEn:
+    type: string
+    description: Street Name in English
+    nullable: true
+additionalProperties: false
+description: CDC National Address structure

@@ -1,0 +1,108 @@
+type: object
+properties:
+  vehicleMakeCode:
+    type: integer
+    description: Vehicle Make Code as per IMS Codes
+    format: int64
+  vehicleModelCode:
+    type: integer
+    description: Vehicle Model Code as per IMS Codes
+    format: int64
+  vehicleColor:
+    type: string
+    description: Vehicle Color
+    nullable: true
+  chassisNo:
+    type: string
+    description: Chassis No
+    nullable: true
+  yearBuilt:
+    type: integer
+    description: Vehicle Manufacturing year
+    format: int32
+  liability:
+    type: number
+    description: Claimant's Liability
+    format: double
+  engineNo:
+    type: string
+    description: Engine Number
+    nullable: true
+  marketValue:
+    type: number
+    description: Vehicle Market Value
+    format: double
+  location:
+    type: string
+    description: Car park Location
+    nullable: true
+  licenseNo:
+    type: string
+    description: Driver License Number
+    nullable: true
+  plateNo:
+    type: string
+    description: Vehicle Plate Number
+    nullable: true
+  plateChar1:
+    type: string
+    description: 1st Plate Character in arabic
+    nullable: true
+  plateChar2:
+    type: string
+    description: 2nd Plate Character in arabic
+    nullable: true
+  plateChar3:
+    type: string
+    description: 3rd Plate Character in arabic
+    nullable: true
+  plateSequence:
+    type: string
+    description: Plate Sequence Number
+    nullable: true
+  plateSource:
+    type: string
+    description: Plate Source
+    nullable: true
+  customID:
+    type: string
+    description: Vehicle Custom ID
+    nullable: true
+  vehicleBodyType:
+    type: string
+    description: Vehicle Body Type
+    nullable: true
+  driverName:
+    type: string
+    description: Driver Name
+    nullable: true
+  driverAge:
+    type: integer
+    description: Driver Age
+    format: int32
+  drivingExperience:
+    type: integer
+    description: Driving Experience In Years
+    format: int32
+  lesseeName:
+    type: string
+    description: Lessee Name
+    nullable: true
+  lesseeID:
+    type: string
+    description: Lessee ID Number
+    nullable: true
+  driverAddress:
+    type: string
+    description: Driver Address
+    nullable: true
+  tpInsurCoPIN:
+    type: integer
+    description: Company PIN where TP claimant is Insured
+    format: int64
+  tpClaimNo:
+    type: string
+    description: Claim No at the Company where TP Claimant is insured
+    nullable: true
+additionalProperties: false
+description: Vehicle Details

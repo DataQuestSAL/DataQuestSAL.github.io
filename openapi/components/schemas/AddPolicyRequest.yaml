@@ -1,0 +1,45 @@
+required:
+  - effectiveDate
+  - expiryDate
+  - issueDate
+  - policyNumber
+  - policyType
+  - properties
+type: object
+properties:
+  properties:
+    maxLength: 1
+    minLength: 1
+    type: array
+    items:
+      $ref: .\PropertyInfo.yaml
+    description: >-
+      A list of Properties to include in the policy. This will currently accept
+      only one entry per policy due to Salamah platform limitation.
+  policyNumber:
+    maxLength: 100
+    minLength: 3
+    type: string
+    description: Insurance Policy Number
+  subPolicyNumber:
+    type: string
+    description: Sub Insurance Policy Number
+    nullable: true
+  issueDate:
+    type: string
+    description: Policy Issue Date.
+    format: date-time
+  effectiveDate:
+    type: string
+    description: Policy Effective Date.
+    format: date-time
+  expiryDate:
+    type: string
+    description: Policy Expiry Date.
+    format: date-time
+  policyType:
+    allOf:
+      - $ref: .\InsurancePolicyType.yaml
+    description: Insurance Policy Type
+additionalProperties: false
+description: The details of the policy and CDC Approval

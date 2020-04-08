@@ -1,0 +1,92 @@
+type: object
+properties:
+  ownerName:
+    type: string
+    description: Vehicle Owner Name
+    nullable: true
+  ownerID:
+    type: string
+    description: Vehicle Owner ID Number
+    nullable: true
+  email:
+    type: string
+    description: Vehicle Owner Email
+    nullable: true
+  ownerMobile:
+    type: string
+    description: Vehicle Owner Mobile
+    nullable: true
+  poBox:
+    type: string
+    description: Vehicle Owner POBox
+    nullable: true
+  driverID:
+    type: string
+    description: Driver ID
+    nullable: true
+  driverName:
+    type: string
+    description: Driver Name
+    nullable: true
+  driverDOB:
+    type: string
+    description: Driver DOB
+    nullable: true
+  driverIsOwner:
+    type: boolean
+    description: 'is the driver, the Vehicle Owner?'
+  additionalInfo:
+    type: string
+    description: Additional Accident Information
+    nullable: true
+  accidentInfo:
+    type: string
+    description: Accident Information
+    nullable: true
+  paymentType:
+    allOf:
+      - $ref: .\PaymentType.yaml
+    description: Payment Mode
+  bankNo:
+    type: integer
+    description: Bank Number
+    format: int32
+  ibanNo:
+    type: string
+    description: IBAN Number
+    nullable: true
+  ownerIsDeclaring:
+    type: boolean
+    description: Decleration is done by vehicle owner
+  declaringName:
+    type: string
+    description: Name of the declaring person
+    nullable: true
+  declaringID:
+    type: string
+    description: ID Number of the declaring person
+    nullable: true
+  representitive:
+    type: string
+    description: Representitive
+    nullable: true
+  declarationDate:
+    type: string
+    nullable: true
+  declaringMobile:
+    type: string
+    description: Mobile Number of the Declaring Person
+    nullable: true
+  vehicleNeedInspection:
+    type: boolean
+    description: specify if the vehicle need inspection
+  typeOfClaim:
+    type: string
+    description: Type of Claim
+    nullable: true
+  dateoOfSubmission:
+    type: string
+    description: Submission Date
+    nullable: true
+additionalProperties: false
+description: Additional Information

@@ -1,0 +1,6 @@
+enum:
+  - Approved
+  - InsuranceIssued
+  - InsuranceDeleted
+type: string
+description: Response that represents the stauts of the reuqested CDC.

@@ -1,0 +1,48 @@
+openapi: 3.0.1
+info:
+  title: AllianzSF Api Portal
+  description: AllianzSF Api Portal.
+  contact:
+    name: Data Quest sal.
+    email: support@dq.com.lb
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  version: '1.0'
+paths:
+  /AllianzSFApiPortal/v1/Claims:
+    $ref: paths\AllianzSFApiPortal@v1@Claims.yaml
+  /AllianzSFApiPortal/v1/Claims/Details:
+    $ref: paths\AllianzSFApiPortal@v1@Claims@Details.yaml
+  /AllianzSFApiPortal/v1/Claims/TransactionsDetails:
+    $ref: paths\AllianzSFApiPortal@v1@Claims@TransactionsDetails.yaml
+  /AllianzSFApiPortal/v1/Claims/Claimant:
+    $ref: paths\AllianzSFApiPortal@v1@Claims@Claimant.yaml
+  /AllianzSFApiPortal/v1/Claims/UpdateClaimant:
+    $ref: paths\AllianzSFApiPortal@v1@Claims@UpdateClaimant.yaml
+  /AllianzSFApiPortal/v1/Claims/ClaimUpdate:
+    $ref: paths\AllianzSFApiPortal@v1@Claims@ClaimUpdate.yaml
+  /AllianzSFApiPortal/v1/Inquiries/Approval:
+    $ref: paths\AllianzSFApiPortal@v1@Inquiries@Approval.yaml
+  /AllianzSFApiPortal/v1/ListOfValues/Sync:
+    $ref: paths\AllianzSFApiPortal@v1@ListOfValues@Sync.yaml
+  /AllianzSFApiPortal/v1/Payments/PaymentApproval:
+    $ref: paths\AllianzSFApiPortal@v1@Payments@PaymentApproval.yaml
+  /AllianzSFApiPortal/v1/Persons/PinUpdate:
+    $ref: paths\AllianzSFApiPortal@v1@Persons@PinUpdate.yaml
+  /AllianzSFApiPortal/v1/Policies:
+    $ref: paths\AllianzSFApiPortal@v1@Policies.yaml
+  '/AllianzSFApiPortal/v1/Policies/{policyId}':
+    $ref: 'paths\AllianzSFApiPortal@v1@Policies@{policyId}.yaml'
+  /AllianzSFApiPortal/v1/Policies/SearchPolicy:
+    $ref: paths\AllianzSFApiPortal@v1@Policies@SearchPolicy.yaml
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          authorizationUrl: 'http://192.168.12.128:83/connect/authorize'
+          tokenUrl: 'http://192.168.12.128:83/connect/token'
+          scopes:
+            AllianzSFApiPortal: AllianzSF Api Portal

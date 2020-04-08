@@ -1,0 +1,13 @@
+type: object
+properties:
+  imsReference:
+    type: string
+    description: IMS Reference
+    nullable: true
+  pinUpdate:
+    allOf:
+      - $ref: .\PinUpdate.yaml
+    description: Pin Update
+    nullable: true
+additionalProperties: false
+description: Pin Update Request Structure

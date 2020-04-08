@@ -1,0 +1,7 @@
+enum:
+  - ''
+  - A
+  - R
+  - P
+type: string
+description: Repair Statuses

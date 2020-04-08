@@ -1,0 +1,33 @@
+post:
+  tags:
+    - ListOfValues
+  summary: Synching List Of Values
+  requestBody:
+    description: Structure holding infromation about the list of values
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\ListOfValuesSyncRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\ListOfValuesSyncResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access

@@ -1,0 +1,27 @@
+type: object
+properties:
+  claimSerNo:
+    type: integer
+    description: Claim Serial Number
+    format: int64
+  polSerNo:
+    type: integer
+    description: Policy Serial Number
+    format: int64
+  claimantType:
+    allOf:
+      - $ref: .\ClaimantType.yaml
+    description: Claimant Type
+  claimantNo:
+    type: integer
+    description: Claimant Number
+    format: int64
+  pin:
+    type: integer
+    description: Pin
+    format: int64
+  internalReference:
+    type: string
+    nullable: true
+additionalProperties: false
+description: Add Claimant Response Structure

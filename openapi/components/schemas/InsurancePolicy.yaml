@@ -1,0 +1,46 @@
+required:
+  - effectiveDate
+  - expiryDate
+  - issueDate
+  - policyNumber
+type: object
+properties:
+  policyNumber:
+    maxLength: 100
+    minLength: 3
+    type: string
+    description: Insurance Policy Number
+  subPolicyNumber:
+    type: string
+    description: Sub Insurance Policy Number
+    nullable: true
+  issueDate:
+    type: string
+    description: Policy Issue Date.
+    format: date-time
+  effectiveDate:
+    type: string
+    description: Policy Effective Date
+    format: date-time
+  expiryDate:
+    type: string
+    description: Policy Expiry Date
+    format: date-time
+  policyType:
+    allOf:
+      - $ref: .\InsurancePolicyType.yaml
+    description: Insurance Policy Type
+  nationalAddressesIds:
+    type: array
+    items:
+      type: string
+    description: Najm field.
+    nullable: true
+  id:
+    type: string
+    description: >-
+      Unique identifier of the Object created. Make sure to store this for
+      future use. Never Fill this field. It will always be ignored.
+    nullable: true
+additionalProperties: false
+description: Return structure of the Insurance Policy creation

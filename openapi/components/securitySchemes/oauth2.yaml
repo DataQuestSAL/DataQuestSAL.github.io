@@ -1,0 +1,7 @@
+type: oauth2
+flows:
+  clientCredentials:
+    authorizationUrl: 'http://192.168.12.128:83/connect/authorize'
+    tokenUrl: 'http://192.168.12.128:83/connect/token'
+    scopes:
+      AllianzSFApiPortal: AllianzSF Api Portal

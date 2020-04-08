@@ -1,0 +1,33 @@
+put:
+  tags:
+    - Claims
+  summary: Add a Claimant to a certain Claim
+  requestBody:
+    description: Structure needed to add a claimant to a claim
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\AddClaimantRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\AddClaimantResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access

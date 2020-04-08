@@ -1,0 +1,97 @@
+type: object
+properties:
+  claimSerNo:
+    type: integer
+    description: Claim Serial Number
+    format: int64
+  claimantType:
+    allOf:
+      - $ref: .\ClaimantType.yaml
+    description: Claimant Type
+  claimantNo:
+    type: integer
+    description: Claimant Number
+    format: int64
+  settlementReference:
+    type: string
+    description: Settlement Reference
+    nullable: true
+    example: 'Sample : CPD#55655'
+  trnSequence:
+    type: integer
+    description: Transaction Sequence
+    format: int64
+  trnType:
+    allOf:
+      - $ref: .\TransactionType.yaml
+    description: Transaction Type
+  trnSerial:
+    type: integer
+    description: Transaction Serial Number
+    format: int64
+  trnDate:
+    type: string
+    description: Transaction Date
+    format: date-time
+  pin:
+    type: integer
+    description: Payee/Payer PIN
+    format: int64
+  claimantName:
+    type: string
+    description: Claimant Name
+    nullable: true
+  trnDescription:
+    type: string
+    description: Transaction Notes
+    nullable: true
+  currencyCode:
+    type: string
+    description: Transaction Currency
+    nullable: true
+  amount:
+    type: number
+    description: Transaction Amount
+    format: double
+  feesEvaluation:
+    type: number
+    description: Fees Evaluation
+    format: double
+  recoveryEvaluation:
+    type: number
+    description: Recovery Evaluation
+    format: double
+  cancelled:
+    type: boolean
+    description: if the Transaction is Cancelled/it is a a cancellation
+  cancelTrnSerial:
+    type: integer
+    description: >-
+      TrnSerial of the Cancelling trasaction or the TrnSerial of the cancelled
+      transaction
+    format: int64
+  vat:
+    type: boolean
+    description: is VAT Applicable?
+  vatAmount:
+    type: number
+    description: VAT Amount
+    format: double
+  vatType:
+    type: string
+    description: VAT Type
+    nullable: true
+  transactionDetails:
+    type: array
+    items:
+      $ref: .\TransactionDetail.yaml
+    description: List of Transaction Detail
+    nullable: true
+  recoveryDetails:
+    type: array
+    items:
+      $ref: .\RecoveryDetail.yaml
+    description: List of Recovery Detail
+    nullable: true
+additionalProperties: false
+description: Transaction Data

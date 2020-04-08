@@ -1,0 +1,10 @@
+type: object
+properties:
+  doublePin:
+    type: array
+    items:
+      $ref: .\DoublePin.yaml
+    description: List of Double Pins
+    nullable: true
+additionalProperties: false
+description: Pin Update

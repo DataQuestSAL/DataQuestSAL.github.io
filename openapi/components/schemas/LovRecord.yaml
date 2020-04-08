@@ -1,0 +1,28 @@
+type: object
+properties:
+  tableName:
+    type: string
+    description: Table Name
+    nullable: true
+  code:
+    type: string
+    description: Code
+    nullable: true
+  latinDescription:
+    type: string
+    description: Latin Description
+    nullable: true
+  arabicDescription:
+    type: string
+    description: Arabic Description
+    nullable: true
+  parentCode:
+    type: string
+    description: Parent Code
+    nullable: true
+  action:
+    type: string
+    description: Action
+    nullable: true
+additionalProperties: false
+description: List Of Values Record

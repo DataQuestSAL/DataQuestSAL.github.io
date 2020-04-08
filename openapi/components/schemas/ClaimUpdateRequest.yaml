@@ -1,0 +1,10 @@
+type: object
+properties:
+  imsReference:
+    type: string
+    nullable: true
+  claimUpdate:
+    allOf:
+      - $ref: .\ClaimUpdate.yaml
+    nullable: true
+additionalProperties: false

@@ -1,0 +1,79 @@
+type: object
+properties:
+  claimantGender:
+    type: string
+    description: Claimant Gender
+    nullable: true
+  claimantTitle:
+    type: string
+    description: Claimant Title
+    nullable: true
+  claimantFirstName:
+    type: string
+    description: Claimant First Name Latin
+    nullable: true
+  claimantFatherName:
+    type: string
+    description: Claimant Father Name Latin
+    nullable: true
+  claimantFamilyName:
+    type: string
+    description: Claimant Family Name Latin
+    nullable: true
+  claimantFirstNameArb:
+    type: string
+    description: Claimant First Name Arabic
+    nullable: true
+  claimantFatherNameArb:
+    type: string
+    description: Claimant Father Name Arabic
+    nullable: true
+  claimantFamilyNameArb:
+    type: string
+    description: Claimant Family Name Arabic
+    nullable: true
+  claimantNationality:
+    type: string
+    description: Claimant Nationality
+    nullable: true
+  claimantProfessionCode:
+    type: string
+    description: Claimant Profession
+    nullable: true
+  claimantDOB:
+    type: string
+    description: Claimant Date of Birth
+    nullable: true
+  claimantIDType:
+    type: string
+    description: Claimant ID Type
+    nullable: true
+  claimantIDNo:
+    type: string
+    description: Claimant ID Number
+    nullable: true
+  claimantIDExpiry:
+    type: string
+    description: Claimant ID Expiry Date(Gregorian)
+    nullable: true
+  claimantMobile:
+    type: string
+    description: Claimant Mobile Number
+    nullable: true
+  claimantEmail:
+    type: string
+    description: Claimant Email Address
+    nullable: true
+  claimantMaritalStatus:
+    type: string
+    description: Claimant Marital Status
+    nullable: true
+  yaqeenChecked:
+    type: boolean
+    description: Is Claimant Yaqeen Checked?
+  yaqeenReference:
+    type: string
+    description: Yaqeen Reference
+    nullable: true
+additionalProperties: false
+description: Claimant Details

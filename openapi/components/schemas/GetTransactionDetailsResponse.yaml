@@ -1,0 +1,13 @@
+type: object
+properties:
+  transactions:
+    type: array
+    items:
+      $ref: .\Transaction.yaml
+    description: List of Transactions
+    nullable: true
+  internalReference:
+    type: string
+    nullable: true
+additionalProperties: false
+description: Transaction Details response structure

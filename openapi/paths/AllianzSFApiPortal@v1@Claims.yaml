@@ -1,0 +1,81 @@
+get:
+  tags:
+    - Claims
+  summary: Retrieves the Claims of a Certificate
+  parameters:
+    - name: serialnumber
+      in: query
+      description: Policy Serial Number
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: certificatenumber
+      in: query
+      description: Certificate Number
+      required: true
+      schema:
+        type: integer
+        format: int64
+    - name: externalReference
+      in: query
+      description: External Reference
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\GetClaimsResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access
+put:
+  tags:
+    - Claims
+  summary: Create a Claim for a Certificate
+  requestBody:
+    description: Structure needed for creating a claim
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\CreateClaimRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\CreateClaimResponse.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access

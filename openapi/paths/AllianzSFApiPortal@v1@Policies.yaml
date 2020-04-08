@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Policies
+  summary: >-
+    Create a new Insurance Policy against a specific CDC Approval. Requires
+    prior inquiry of the CDC Approval.
+  requestBody:
+    description: The details of the policy and CDC Approval
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\AddPolicyRequest.yaml
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\InsurancePolicy.yaml
+    '400':
+      description: Bad Request
+    '401':
+      description: Unauthorized
+    '403':
+      description: Forbidden
+  security:
+    - oauth2:
+        - openid
+        - profile
+        - email
+        - address
+        - phone
+        - role
+        - AllianzSFApiPortal
+        - offline_access
