@@ -9,6 +9,9 @@ info:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
   version: '1.0'
+  x-logo:
+    url: 'https://dataquestsal.github.io/assets/images/logo.png'
+    altText: Data Quest sal. Logo
 paths:
   /AllianzSFApiPortal/v1/Claims:
     get:
@@ -278,45 +281,6 @@ paths:
             - role
             - AllianzSFApiPortal
             - offline_access
-  /AllianzSFApiPortal/v1/Inquiries/Approval:
-    get:
-      tags:
-        - Inquiries
-      summary: Inquires for the CDC approval status.
-      parameters:
-        - name: requestNumber
-          in: query
-          description: 'The CDC Request Number, this field is provided by the customer.'
-          schema:
-            type: string
-        - name: verificationCode
-          in: query
-          description: 'The CDC Verification Code, this field is provided by the customer.'
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CdcApprovalInquiryResponse'
-        '400':
-          description: Bad Request
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-      security:
-        - oauth2:
-            - openid
-            - profile
-            - email
-            - address
-            - phone
-            - role
-            - AllianzSFApiPortal
-            - offline_access
   /AllianzSFApiPortal/v1/ListOfValues/Sync:
     post:
       tags:
@@ -419,76 +383,6 @@ paths:
             - role
             - AllianzSFApiPortal
             - offline_access
-  /AllianzSFApiPortal/v1/Policies:
-    post:
-      tags:
-        - Policies
-      summary: >-
-        Create a new Insurance Policy against a specific CDC Approval. Requires
-        prior inquiry of the CDC Approval.
-      requestBody:
-        description: The details of the policy and CDC Approval
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AddPolicyRequest'
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InsurancePolicy'
-        '400':
-          description: Bad Request
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-      security:
-        - oauth2:
-            - openid
-            - profile
-            - email
-            - address
-            - phone
-            - role
-            - AllianzSFApiPortal
-            - offline_access
-  '/AllianzSFApiPortal/v1/Policies/{policyId}':
-    delete:
-      tags:
-        - Policies
-      summary: Cancels an insurance policy.
-      parameters:
-        - name: policyId
-          in: path
-          description: >-
-            The id of the policy (UUID or GUID) that Najm returned when created
-            the policy.
-          required: true
-          schema:
-            type: string
-            format: uuid
-      responses:
-        '200':
-          description: Success
-        '400':
-          description: Bad Request
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-      security:
-        - oauth2:
-            - openid
-            - profile
-            - email
-            - address
-            - phone
-            - role
-            - AllianzSFApiPortal
-            - offline_access
   /AllianzSFApiPortal/v1/Policies/SearchPolicy:
     post:
       tags:
@@ -529,8 +423,8 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          authorizationUrl: 'http://192.168.12.128:83/connect/authorize'
-          tokenUrl: 'http://192.168.12.128:83/connect/token'
+          authorizationUrl: 'http://dataquestsal.github.io/connect/authorize'
+          tokenUrl: 'http://dataquestsal.github.io/connect/token'
           scopes:
             AllianzSFApiPortal: AllianzSF Api Portal
   schemas:
@@ -1761,106 +1655,6 @@ components:
             - $ref: '#/components/schemas/ClaimUpdate'
           nullable: true
       additionalProperties: false
-    CdcStatus:
-      enum:
-        - Approved
-        - InsuranceIssued
-        - InsuranceDeleted
-      type: string
-      description: Response that represents the stauts of the reuqested CDC.
-    CdcNationalAddressResponse:
-      type: object
-      properties:
-        cityID:
-          type: integer
-          description: City ID
-          format: int32
-        cityName:
-          type: string
-          description: City Name
-          nullable: true
-        cityNameEn:
-          type: string
-          description: City Name in English
-          nullable: true
-        district:
-          type: string
-          description: District Name
-          nullable: true
-        districtEn:
-          type: string
-          description: District Name in English
-          nullable: true
-        buildingNumber:
-          type: integer
-          description: Building Number
-          format: int32
-        additionalNumber:
-          type: integer
-          description: Additional Number
-          format: int32
-        zipCode:
-          type: integer
-          description: Zip Code
-          format: int32
-        unitNo:
-          type: integer
-          description: Unit Number
-          format: int32
-        streetName:
-          type: string
-          description: Street Name
-          nullable: true
-        streetNameEn:
-          type: string
-          description: Street Name in English
-          nullable: true
-      additionalProperties: false
-      description: CDC National Address structure
-    CdcApprovalInquiryResponse:
-      type: object
-      properties:
-        status:
-          allOf:
-            - $ref: '#/components/schemas/CdcStatus'
-          description: Response that represents the stauts of the reuqested CDC.
-        companyName:
-          type: string
-          description: Company Name that owns the CDC
-          nullable: true
-        branchName:
-          type: string
-          description: Branch of the company that owns the CDC
-          nullable: true
-        moiNumber:
-          type: string
-          description: >-
-            MOI Number of the copmany that owns the CDC. Also known as 700
-            number.
-          nullable: true
-        nationalAddress:
-          allOf:
-            - $ref: '#/components/schemas/CdcNationalAddressResponse'
-          description: CDC National Address structure
-          nullable: true
-        issueDate:
-          type: string
-          description: The CDC Issue Date (Gregorian).
-          format: date-time
-        expiryDate:
-          type: string
-          description: The CDC Expiry Date (Gregorian).
-          format: date-time
-        hijriIssueDate:
-          type: string
-          description: The CDC Issue Date (Hijri).
-          nullable: true
-        hijriExpiryDate:
-          type: string
-          description: The CDC Expiry Date (Hijri).
-          nullable: true
-      additionalProperties: false
-      description: Response that represents the stauts of the reuqested CDC.
     LovRecord:
       type: object
       properties:
@@ -2041,123 +1835,6 @@ components:
           nullable: true
       additionalProperties: false
       description: Pin Update Response Structure
-    PropertyInfo:
-      required:
-        - requestNumber
-        - verificationCode
-      type: object
-      properties:
-        requestNumber:
-          maxLength: 14
-          minLength: 14
-          type: string
-          description: 'The CDC Request Number, this field is provided by the customer.'
-        verificationCode:
-          maxLength: 5
-          minLength: 5
-          type: string
-          description: 'The CDC Verification Code, this field is provided by the customer.'
-      additionalProperties: false
-      description: Property Info structure
-    InsurancePolicyType:
-      enum:
-        - Motor
-        - Property
-      type: string
-      description: Insurance Policy Type
-    AddPolicyRequest:
-      required:
-        - effectiveDate
-        - expiryDate
-        - issueDate
-        - policyNumber
-        - policyType
-        - properties
-      type: object
-      properties:
-        properties:
-          maxLength: 1
-          minLength: 1
-          type: array
-          items:
-            $ref: '#/components/schemas/PropertyInfo'
-          description: >-
-            A list of Properties to include in the policy. This will currently
-            accept only one entry per policy due to Salamah platform limitation.
-        policyNumber:
-          maxLength: 100
-          minLength: 3
-          type: string
-          description: Insurance Policy Number
-        subPolicyNumber:
-          type: string
-          description: Sub Insurance Policy Number
-          nullable: true
-        issueDate:
-          type: string
-          description: Policy Issue Date.
-          format: date-time
-        effectiveDate:
-          type: string
-          description: Policy Effective Date.
-          format: date-time
-        expiryDate:
-          type: string
-          description: Policy Expiry Date.
-          format: date-time
-        policyType:
-          allOf:
-            - $ref: '#/components/schemas/InsurancePolicyType'
-          description: Insurance Policy Type
-      additionalProperties: false
-      description: The details of the policy and CDC Approval
-    InsurancePolicy:
-      required:
-        - effectiveDate
-        - expiryDate
-        - issueDate
-        - policyNumber
-      type: object
-      properties:
-        policyNumber:
-          maxLength: 100
-          minLength: 3
-          type: string
-          description: Insurance Policy Number
-        subPolicyNumber:
-          type: string
-          description: Sub Insurance Policy Number
-          nullable: true
-        issueDate:
-          type: string
-          description: Policy Issue Date.
-          format: date-time
-        effectiveDate:
-          type: string
-          description: Policy Effective Date
-          format: date-time
-        expiryDate:
-          type: string
-          description: Policy Expiry Date
-          format: date-time
-        policyType:
-          allOf:
-            - $ref: '#/components/schemas/InsurancePolicyType'
-          description: Insurance Policy Type
-        nationalAddressesIds:
-          type: array
-          items:
-            type: string
-          description: Najm field.
-          nullable: true
-        id:
-          type: string
-          description: >-
-            Unique identifier of the Object created. Make sure to store this for
-            future use. Never Fill this field. It will always be ignored.
-          nullable: true
-      additionalProperties: false
-      description: Return structure of the Insurance Policy creation
     SearchPolicyRequest:
       required:
         - certificateNo
