@@ -10,7 +10,7 @@ info:
     url: 'https://opensource.org/licenses/MIT'
   version: '1.0'
   x-logo:
-    url: 'https://dataquestsal.github.io/assets/images/logo.png'
+    url: 'https://dataquestsal.github.io/assets/images/DQLogo.png'
     altText: Data Quest sal. Logo
 paths:
   /AllianzSFApiPortal/v1/Claims:
